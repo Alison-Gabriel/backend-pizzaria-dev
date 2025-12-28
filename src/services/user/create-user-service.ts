@@ -1,6 +1,31 @@
+import prismaClient from "../../prisma";
+
+interface CreateUserProps {
+  name: string;
+  email: string;
+  password: string;
+}
+
 export class CreateUserService {
-  async execute() {
-    console.log("Executando serviço...");
-    return "Usuário criado!";
+  async execute({ name, email, password }: CreateUserProps) {
+    const userAlreadyExists = await prismaClient.user.findFirst({
+      where: {
+        email: email,
+      },
+    });
+
+    if (userAlreadyExists) {
+      throw new Error("Usuário já existente.");
+    }
+
+    const user = await prismaClient.user.create({
+      data: {
+        name: name,
+        email: email,
+        password: password,
+      },
+    });
+
+    return user.name;
   }
 }
