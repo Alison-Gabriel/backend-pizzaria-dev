@@ -1,14 +1,14 @@
 import prismaClient from "../../prisma";
 import { hash } from "bcryptjs";
 
-interface CreateUserProps {
+interface CreateUserServiceProps {
   name: string;
   email: string;
   password: string;
 }
 
 export class CreateUserService {
-  async execute({ name, email, password }: CreateUserProps) {
+  async execute({ name, email, password }: CreateUserServiceProps) {
     const userAlreadyExists = await prismaClient.user.findFirst({
       where: {
         email: email,
