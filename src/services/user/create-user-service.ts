@@ -27,8 +27,15 @@ export class CreateUserService {
         email: email,
         password: encryptedPassword,
       },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        role: true,
+        createdAt: true,
+      },
     });
 
-    return user.name;
+    return user;
   }
 }
