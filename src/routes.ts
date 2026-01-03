@@ -1,13 +1,13 @@
 import { Router } from "express";
-import { CreateUserController } from "./controllers/user/create-user-controller";
-import { validateSchema } from "./middlewares/validate-schema";
-import { authUserSchema, createUserSchema } from "./schemas/user-schema";
-import { AuthUserController } from "./controllers/user/auth-user-controller";
-import { UserDetailsController } from "./controllers/user/user-details-controller";
-import { validateAccessToken } from "./middlewares/validate-access-token";
-import { CreateCategoryController } from "./controllers/category/create-category-controller";
-import { validateAdminRole } from "./middlewares/validate-admin-role";
-import { createCategorySchema } from "./schemas/category-schema";
+import { CreateUserController } from "./controllers/user/CreateUserController";
+import { validateSchema } from "./middlewares/validateSchema";
+import { authUserSchema, createUserSchema } from "./schemas/userSchema";
+import { AuthUserController } from "./controllers/user/AuthUserController";
+import { UserDetailsController } from "./controllers/user/UserDetailsController";
+import { validateAccessToken } from "./middlewares/validateAccessToken";
+import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
+import { validateAdminRole } from "./middlewares/validateAdminRole";
+import { createCategorySchema } from "./schemas/categorySchema";
 
 export const router = Router();
 

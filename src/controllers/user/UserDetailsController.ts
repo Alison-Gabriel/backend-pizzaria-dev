@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { UserDetailsService } from "../../services/user/user-details-service";
+import { UserDetailsService } from "../../services/user/UserDetailsService";
 
 export class UserDetailsController {
   async handle(req: Request, res: Response) {
