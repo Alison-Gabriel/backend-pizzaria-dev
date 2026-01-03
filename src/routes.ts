@@ -7,6 +7,7 @@ import { UserDetailsController } from "./controllers/user/user-details-controlle
 import { validateAccessToken } from "./middlewares/validate-access-token";
 import { CreateCategoryController } from "./controllers/category/create-category-controller";
 import { validateAdminRole } from "./middlewares/validate-admin-role";
+import { createCategorySchema } from "./schemas/category-schema";
 
 export const router = Router();
 
@@ -30,5 +31,6 @@ router.post(
   "/category",
   validateAccessToken,
   validateAdminRole,
+  validateSchema(createCategorySchema),
   new CreateCategoryController().handle
 );

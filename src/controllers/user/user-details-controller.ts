@@ -6,8 +6,8 @@ export class UserDetailsController {
     const userId = req.authUserId;
 
     const userDetailsService = new UserDetailsService();
-    const user = await userDetailsService.execute({ userId });
+    const userDetails = await userDetailsService.execute({ userId });
 
-    return res.json({ user });
+    return res.json(userDetails);
   }
 }

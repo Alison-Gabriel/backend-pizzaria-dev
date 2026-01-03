@@ -6,8 +6,8 @@ export class CreateCategoryController {
     const { name } = req.body;
 
     const createCategoryService = new CreateCategoryService();
-    const category = await createCategoryService.execute({ name });
+    const createdCategory = await createCategoryService.execute({ name });
 
-    return res.status(201).json({ category });
+    return res.status(201).json(createdCategory);
   }
 }
