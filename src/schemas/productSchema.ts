@@ -42,3 +42,9 @@ export const listProductsSchema = z.object({
       .transform((value) => value === "true"),
   }),
 });
+
+export const deactivateProductSchema = z.object({
+  body: z.object({
+    productId: z.uuid(),
+  }),
+});

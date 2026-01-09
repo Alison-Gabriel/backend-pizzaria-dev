@@ -14,9 +14,11 @@ import multer from "multer";
 import uploadConfig from "./config/multer";
 import {
   createProductSchema,
+  deactivateProductSchema,
   listProductsSchema,
 } from "./schemas/productSchema";
 import { ListProductsController } from "./controllers/product/ListProductsController";
+import { DeactivateProductController } from "./controllers/product/DeactivateProductController";
 
 export const router = Router();
 const upload = multer(uploadConfig);
@@ -66,4 +68,12 @@ router.post(
   upload.single("file"),
   validateSchema(createProductSchema),
   new CreateProductController().handle
+);
+
+router.patch(
+  "/product",
+  validateAccessToken,
+  validateAdminRole,
+  validateSchema(deactivateProductSchema),
+  new DeactivateProductController().handle
 );
