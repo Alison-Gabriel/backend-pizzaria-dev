@@ -10,8 +10,8 @@ import { validateAdminRole } from "./middlewares/validateAdminRole";
 import { createCategorySchema } from "./schemas/categorySchema";
 import { ListCategoriesController } from "./controllers/category/ListCategoriesController";
 import { CreateProductController } from "./controllers/product/CreateProductController";
-import uploadConfig from "./config/multer";
 import multer from "multer";
+import uploadConfig from "./config/multer";
 
 export const router = Router();
 const upload = multer(uploadConfig);
@@ -51,5 +51,6 @@ router.post(
   "/product",
   validateAccessToken,
   validateAdminRole,
+  upload.single("file"),
   new CreateProductController().handle
 );
