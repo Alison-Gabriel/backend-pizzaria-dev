@@ -25,3 +25,20 @@ export const listOrdersSchema = z.object({
       .transform((value) => value === "true"),
   }),
 });
+
+export const addOrderItemSchema = z.object({
+  body: z.object({
+    orderId: z.uuid(),
+    productId: z.uuid(),
+    amount: z.coerce
+      .number<number>({
+        error: "Insira uma quantidade válida.",
+      })
+      .int({
+        error: "A quantidade não pode ser decimal.",
+      })
+      .positive({
+        error: "A quantidade deve ser maior que zero.",
+      }),
+  }),
+});
