@@ -9,8 +9,12 @@ import { CreateCategoryController } from "./controllers/category/CreateCategoryC
 import { validateAdminRole } from "./middlewares/validateAdminRole";
 import { createCategorySchema } from "./schemas/categorySchema";
 import { ListCategoriesController } from "./controllers/category/ListCategoriesController";
+import { CreateProductController } from "./controllers/product/CreateProductController";
+import uploadConfig from "./config/multer";
+import multer from "multer";
 
 export const router = Router();
+const upload = multer(uploadConfig);
 
 // Users
 router.post(
@@ -40,4 +44,12 @@ router.get(
   "/category",
   validateAccessToken,
   new ListCategoriesController().handle
+);
+
+// Product
+router.post(
+  "/product",
+  validateAccessToken,
+  validateAdminRole,
+  new CreateProductController().handle
 );
