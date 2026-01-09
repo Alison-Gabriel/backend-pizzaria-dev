@@ -21,7 +21,7 @@ app.use((error: Error, _req: Request, res: Response, _next: NextFunction) => {
     });
   }
   return res.status(500).json({
-    error: "Erro no servidor",
+    error: "Server error",
   });
 });
 

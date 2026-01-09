@@ -15,13 +15,15 @@ export const validateSchema =
     } catch (error) {
       if (error instanceof ZodError) {
         return res.status(400).json({
-          error: "Erro na validação",
+          error: "Validation error",
           details: error.issues.map((issue) => ({
             message: issue.message,
           })),
         });
       }
 
-      return res.status(500).json({ error: "Erro no servidor." });
+      console.log(error);
+
+      return res.status(500).json({ message: "Validation server error" });
     }
   };
