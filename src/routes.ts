@@ -12,7 +12,11 @@ import { ListCategoriesController } from "./controllers/category/ListCategoriesC
 import { CreateProductController } from "./controllers/product/CreateProductController";
 import multer from "multer";
 import uploadConfig from "./config/multer";
-import { createProductSchema } from "./schemas/productSchema";
+import {
+  createProductSchema,
+  listProductsSchema,
+} from "./schemas/productSchema";
+import { ListProductsController } from "./controllers/product/ListProductsController";
 
 export const router = Router();
 const upload = multer(uploadConfig);
@@ -48,6 +52,13 @@ router.get(
 );
 
 // Product
+router.get(
+  "/products",
+  validateAccessToken,
+  validateSchema(listProductsSchema),
+  new ListProductsController().handle
+);
+
 router.post(
   "/product",
   validateAccessToken,

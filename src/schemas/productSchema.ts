@@ -30,3 +30,15 @@ export const createProductSchema = z.object({
     }),
   }),
 });
+
+export const listProductsSchema = z.object({
+  query: z.object({
+    disabled: z
+      .enum(["true", "false"], {
+        error: "Escolha somente 'true' ou 'false'",
+      })
+      .optional()
+      .default("false")
+      .transform((value) => value === "true"),
+  }),
+});
