@@ -8,6 +8,7 @@ import { validateAccessToken } from "./middlewares/validateAccessToken";
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
 import { validateAdminRole } from "./middlewares/validateAdminRole";
 import { createCategorySchema } from "./schemas/categorySchema";
+import { ListCategoriesController } from "./controllers/category/ListCategoriesController";
 
 export const router = Router();
 
@@ -33,4 +34,10 @@ router.post(
   validateAdminRole,
   validateSchema(createCategorySchema),
   new CreateCategoryController().handle
+);
+
+router.get(
+  "/category",
+  validateAccessToken,
+  new ListCategoriesController().handle
 );
