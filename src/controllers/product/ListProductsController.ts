@@ -3,12 +3,11 @@ import { ListProductsService } from "../../services/product/ListProductsService"
 
 export class ListProductsController {
   async handle(req: Request, res: Response) {
-    const queryDisabled = Boolean(req.query.disabled);
+    const disabledQuery = String(req.query.disabled);
+    const disabled = disabledQuery === "true" ? true : false;
 
     const listProductsService = new ListProductsService();
-    const products = await listProductsService.execute({
-      disabled: queryDisabled,
-    });
+    const products = await listProductsService.execute({ disabled });
 
     return res.status(200).json(products);
   }

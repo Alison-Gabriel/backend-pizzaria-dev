@@ -21,6 +21,9 @@ import {
 import { ListProductsController } from "./controllers/product/ListProductsController";
 import { DeactivateProductController } from "./controllers/product/DeactivateProductController";
 import { ListProductsByCategoryController } from "./controllers/product/ListProductsByCategoryController";
+import { createOrderSchema, listOrdersSchema } from "./schemas/orderSchema";
+import { CreateOrderController } from "./controllers/order/CreateOrderController";
+import { ListOrdersController } from "./controllers/order/ListOrdersController";
 
 export const router = Router();
 const upload = multer(uploadConfig);
@@ -85,4 +88,19 @@ router.patch(
   validateAdminRole,
   validateSchema(deactivateProductSchema),
   new DeactivateProductController().handle
+);
+
+// Order
+router.post(
+  "/order",
+  validateAccessToken,
+  validateSchema(createOrderSchema),
+  new CreateOrderController().handle
+);
+
+router.get(
+  "/orders",
+  validateAccessToken,
+  validateSchema(listOrdersSchema),
+  new ListOrdersController().handle
 );
