@@ -19,6 +19,6 @@ export class CreateProductController {
       imageName: req.file.originalname,
     });
 
-    return res.json(product);
+    return res.status(201).json(product);
   }
 }

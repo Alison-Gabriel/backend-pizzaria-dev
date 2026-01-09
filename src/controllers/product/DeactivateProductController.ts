@@ -8,6 +8,6 @@ export class DeactivateProductController {
     const deactivateProductService = new DeactivateProductService();
     const product = await deactivateProductService.execute({ productId });
 
-    res.status(201).json(product);
+    return res.status(201).json(product);
   }
 }

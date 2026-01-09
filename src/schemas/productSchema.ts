@@ -48,3 +48,9 @@ export const deactivateProductSchema = z.object({
     productId: z.uuid(),
   }),
 });
+
+export const listProductsByCategorySchema = z.object({
+  query: z.object({
+    categoryId: z.uuid(),
+  }),
+});

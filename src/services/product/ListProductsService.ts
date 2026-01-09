@@ -15,12 +15,7 @@ export class ListProductsService {
         banner: true,
         description: true,
         disabled: true,
-        category: {
-          select: {
-            id: true,
-            name: true,
-          },
-        },
+        categoryId: true,
         createdAt: true,
       },
       orderBy: {

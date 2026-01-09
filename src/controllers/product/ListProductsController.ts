@@ -10,6 +10,6 @@ export class ListProductsController {
       disabled: queryDisabled,
     });
 
-    res.status(200).json(products);
+    return res.status(200).json(products);
   }
 }
