@@ -54,3 +54,18 @@ export const orderDetailsSchema = z.object({
     order_id: z.uuid(),
   }),
 });
+
+export const sendOrderSchema = z.object({
+  body: z.object({
+    orderId: z.uuid(),
+    name: z
+      .string({
+        error: "Insira um nome válido.",
+      })
+      .trim()
+      .min(3, {
+        error: "Nome muito curto, utilize no mínimo 3 caracteres.",
+      })
+      .optional(),
+  }),
+});
