@@ -48,3 +48,9 @@ export const removeOrderItemSchema = z.object({
     item_id: z.uuid(),
   }),
 });
+
+export const orderDetailsSchema = z.object({
+  query: z.object({
+    order_id: z.uuid(),
+  }),
+});
