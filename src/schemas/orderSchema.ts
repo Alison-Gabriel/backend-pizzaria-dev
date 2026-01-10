@@ -69,3 +69,9 @@ export const sendOrderSchema = z.object({
       .optional(),
   }),
 });
+
+export const finishOrderSchema = z.object({
+  body: z.object({
+    orderId: z.uuid(),
+  }),
+});
