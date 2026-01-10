@@ -75,3 +75,9 @@ export const finishOrderSchema = z.object({
     orderId: z.uuid(),
   }),
 });
+
+export const deleteOrderSchema = z.object({
+  query: z.object({
+    order_id: z.uuid(),
+  }),
+});

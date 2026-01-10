@@ -15,6 +15,7 @@ export class ListOrdersService {
           name: true,
           draft: true,
           status: true,
+          createdAt: true,
           items: {
             select: {
               id: true,
@@ -30,7 +31,6 @@ export class ListOrdersService {
               },
             },
           },
-          createdAt: true,
         },
       });
 

@@ -24,6 +24,7 @@ import { ListProductsByCategoryController } from "./controllers/product/ListProd
 import {
   addOrderItemSchema,
   createOrderSchema,
+  deleteOrderSchema,
   finishOrderSchema,
   listOrdersSchema,
   orderDetailsSchema,
@@ -37,6 +38,7 @@ import { RemoveOrderItemController } from "./controllers/order/RemoveOrderItemCo
 import { OrderDetailsController } from "./controllers/order/OrderDetailsController";
 import { SendOrderController } from "./controllers/order/SendOrderController";
 import { FinishOrderController } from "./controllers/order/FinishOrderController";
+import { DeleteOrderController } from "./controllers/order/DeleteOrderController";
 
 export const router = Router();
 const upload = multer(uploadConfig);
@@ -151,4 +153,11 @@ router.patch(
   validateAccessToken,
   validateSchema(finishOrderSchema),
   new FinishOrderController().handle
+);
+
+router.delete(
+  "/order",
+  validateAccessToken,
+  validateSchema(deleteOrderSchema),
+  new DeleteOrderController().handle
 );
